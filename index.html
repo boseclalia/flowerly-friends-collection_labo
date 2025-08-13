@@ -45,7 +45,7 @@
             height: 100%;
             background-image: url('content/images/12_background/background.webp');
             background-size: cover;
-            background-position: center;
+            background-position: center top;
             background-repeat: no-repeat;
             z-index: -1;
             pointer-events: none;
@@ -65,24 +65,51 @@
         
         /* ヘッダー */
         .header {
-            padding: 48px 32px;
-            margin-bottom: 32px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            padding: 0;
+            margin-bottom: 0;
             text-align: center;
         }
         
         .logo-area {
-            height: 280px;
+            height: auto;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 24px 0 32px 0;
+            margin: 0;
             border-radius: 16px;
+            opacity: 0;
+            transition: opacity 2s ease-out;
+        }
+        
+        .logo-area.fade-in {
+            opacity: 1;
         }
         
         .logo-area img {
-            max-height: 100%;
+            max-height: 280px;
             max-width: 100%;
             object-fit: contain;
+        }
+        
+        .header-text-content {
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%) translateY(30px);
+            width: 80%;
+            opacity: 0;
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        
+        .header-text-content.fade-in {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
         }
         
         .hero-text {
@@ -91,16 +118,16 @@
             color: #555;
             margin-bottom: 16px;
             text-align: left;
-            padding: 0 32px;
+            padding: 0;
         }
         
         .organizer {
             font-size: 13px;
             color: #666;
-            margin-bottom: 20px;
+            margin-bottom: 0;
             font-weight: 300;
             text-align: center;
-            padding: 0 32px;
+            padding: 0;
         }
         
         .schedule-header {
@@ -1423,10 +1450,6 @@
         
         /* レスポンシブ */
         @media (max-width: 768px) {
-            /* スマホで背景画像をぴったりサイズに */
-            .fixed-background {
-                background-size: contain;
-            }
             
             .container {
                 padding: 0 0px;
@@ -1451,13 +1474,13 @@
         }
         
         /* セクションフェードインアニメーション */
-        section, .header {
+        section {
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
         
-        section.fade-in, .header.fade-in {
+        section.fade-in {
             opacity: 1;
             transform: translateY(0);
         }
@@ -1473,10 +1496,12 @@
             <div class="logo-area">
                 <img src="content/images/01_header/logo.png" alt="Flowerly Friends Collection">
             </div>
-            <div class="hero-text" id="hero-section">
-                <p>お花をモチーフにした作品が集うFlowerly Friends Collection（フラコレ）。多才なクリエイターのアートを楽しみ寄付活動もできるアート展示会を2026年2月に開催します。</p>
+            <div class="header-text-content">
+                <div class="hero-text" id="hero-section">
+                    <p>お花をモチーフにした作品が集うFlowerly Friends Collection（フラコレ）。多才なクリエイターのアートを楽しみ寄付活動もできるアート展示会を2026年2月に開催します。</p>
+                </div>
+                <div class="organizer">主催：Flowerly Friends Cosplay</div>
             </div>
-            <div class="organizer">主催：Flowerly Friends Cosplay</div>
         </div>
     </header>
 
@@ -2075,12 +2100,25 @@
             }
         }
         
+        // ヘッダーアニメーション制御
+        function initHeaderAnimations() {
+            // ページロード時にロゴを表示
+            setTimeout(() => {
+                document.querySelector('.logo-area').classList.add('fade-in');
+            }, 500);
+            
+            // スクロール検知でテキスト表示
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    document.querySelector('.header-text-content').classList.add('fade-in');
+                }
+            });
+        }
+        
         // セクションのふわっと表示制御
         function initScrollAnimations() {
-            // ヘッダーと表示されているセクションを対象
-            const header = document.querySelector('.header');
+            // 表示されているセクションを対象
             const sections = document.querySelectorAll('section:not([style*="display: none"])');
-            const allElements = [header, ...sections];
             
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
@@ -2094,13 +2132,16 @@
                 rootMargin: '0px 0px -50px 0px' // 50px手前で発動
             });
             
-            allElements.forEach((element) => {
+            sections.forEach((element) => {
                 observer.observe(element);
             });
         }
         
         // ページロード時に初期化
-        document.addEventListener('DOMContentLoaded', initScrollAnimations);
+        document.addEventListener('DOMContentLoaded', () => {
+            initHeaderAnimations();
+            initScrollAnimations();
+        });
     </script>
 </body>
 </html>
