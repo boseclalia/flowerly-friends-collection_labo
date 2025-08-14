@@ -1,0 +1,15 @@
+<!-- OGP設定 -->
+<!-- 基本のOGP -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Flowerly Friends Collection 2026">
+<meta property="og:description" content="お花をモチーフにした作品が集うアート展示会。2026年2月開催、入場無料">
+<meta property="og:url" content="https://flowerly-friends-collectioin.vercel.app/">
+<meta property="og:image" content="https://flowerly-friends-collectioin.vercel.app/content/images/ogp.jpg">
+<meta property="og:site_name" content="Flowerly Friends Collection">
+
+<!-- Twitter（X）用 -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@kann_50">
+<meta name="twitter:title" content="Flowerly Friends Collection 2026">
+<meta name="twitter:description" content="お花をモチーフにした作品が集うアート展示会。2026年2月開催、入場無料">
+<meta name="twitter:image" content="https://flowerly-friends-collectioin.vercel.app/content/images/ogp.jpg">

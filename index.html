@@ -4,6 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flowerly Friends Collection</title>
+    
+    <!-- OGP設定 -->
+    <!-- 基本のOGP -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Flowerly Friends Collection 2026">
+    <meta property="og:description" content="お花をモチーフにした作品が集うアート展示会。2026年2月開催、入場無料">
+    <meta property="og:url" content="https://flowerly-friends-collectioin.vercel.app/">
+    <meta property="og:image" content="https://flowerly-friends-collectioin.vercel.app/content/images/ogp.jpg">
+    <meta property="og:site_name" content="Flowerly Friends Collection">
+
+    <!-- Twitter（X）用 -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@kann_50">
+    <meta name="twitter:title" content="Flowerly Friends Collection 2026">
+    <meta name="twitter:description" content="お花をモチーフにした作品が集うアート展示会。2026年2月開催、入場無料">
+    <meta name="twitter:image" content="https://flowerly-friends-collectioin.vercel.app/content/images/ogp.jpg">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -65,11 +82,7 @@
         
         /* ヘッダー */
         .header {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            height: auto;
             position: relative;
             padding: 0;
             margin-bottom: 0;
@@ -81,7 +94,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0;
+            margin-top: 150px;
             border-radius: 16px;
             opacity: 0;
             transition: opacity 2s ease-out;
@@ -98,18 +111,16 @@
         }
         
         .header-text-content {
-            position: absolute;
-            bottom: 80px;
-            left: 50%;
-            transform: translateX(-50%) translateY(30px);
             width: 80%;
+            margin: 60px auto 40px auto;
             opacity: 0;
+            transform: translateY(30px);
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
         
         .header-text-content.fade-in {
             opacity: 1;
-            transform: translateX(-50%) translateY(0);
+            transform: translateY(0);
         }
         
         .hero-text {
@@ -550,7 +561,7 @@
         /* Joinセクション */
         .join-section {
             background: linear-gradient(-415deg, #f29bc6 35%, #9980c6 100%);
-            padding: 24px 0;
+            padding: 16px 0 24px 0;
         }
         
         .join-title {
@@ -578,7 +589,7 @@
             color: white;
             margin-bottom: 32px;
             text-align: left;
-            padding: 0 16px;
+            padding: 0 32px;
             letter-spacing: 0.1em;
         }
         
@@ -1317,7 +1328,8 @@
 
         /* スタッフセクション */
         .staff-section {
-            padding-bottom: 24px;
+            padding-top: 40px;
+            padding-bottom: 64px;
         }
         
         .staff-title {
@@ -1627,7 +1639,7 @@
             </div>
             
             <div class="join-button-container">
-                <a href="#" class="join-button">出展の申し込みはこちら</a>
+                <a href="#" class="join-button">詳しくはこちら</a>
             </div>
         </div>
     </section>
