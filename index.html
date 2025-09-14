@@ -301,19 +301,21 @@
             border-radius: 16px;
             width: 80%;
             max-width: 600px;
-            max-height: 70%;
-            overflow-y: auto;
+            max-height: 70vh;
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
         }
         
         .modal-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 24px;
+            margin-bottom: 16px;
             border-bottom: 1px solid rgba(255,255,255,0.3);
             padding-bottom: 16px;
         }
@@ -341,12 +343,20 @@
         .member-list {
             text-align: center;
             line-height: 1.8;
+            flex: 1 1 auto;
+            overflow: auto;
         }
         
         .member-list p {
             margin: 8px 0;
             font-size: 14px;
             color: white;
+        }
+
+        /* モーダル表示時に背面のページスクロールを無効化 */
+        body.modal-open {
+            overflow: hidden;
+            touch-action: none;
         }
         
         .member-count {
@@ -2008,7 +2018,6 @@
                 'Pop',
                 'RITAfuji',
                 'Risa',
-                'Satoshi Miyachi',
                 'SOUPGIRLS',
                 'ten.draws',
                 'YOSHEN',
@@ -2056,7 +2065,7 @@
                 'ten.draws',
                 'Amane',
                 'ままりも',
-                'ゆうみに',
+                'yu_mini',
                 'eno',
                 '由美',
                 'DotAnimals',
@@ -2075,6 +2084,11 @@
                 '藤米ちこ',
                 '碧水(hekisui)',
                 'いすむ',
+                'ROKU',
+                'エース',
+                'ici',
+                'kafkaf',
+                'しらたま',
                 'Flowerly Friends'
             ]
         };
@@ -2100,10 +2114,12 @@
             memberList.appendChild(countItem);
             
             modal.style.display = 'block';
+            document.body.classList.add('modal-open');
         }
 
         function closeModal() {
             document.getElementById('memberModal').style.display = 'none';
+            document.body.classList.remove('modal-open');
         }
 
         // モーダル外をクリックしたら閉じる

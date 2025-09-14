@@ -21,7 +21,6 @@
 - Pop
 - RITAfuji
 - Risa
-- Satoshi Miyachi
 - SOUPGIRLS
 - ten.draws
 - YOSHEN
@@ -45,6 +44,7 @@
 - 由美
 - 吉澤知美
 - Flowerly Friends
+
 
 # 2025年参加メンバー
 /* テキスト左寄せ */
@@ -70,7 +70,7 @@
 - ten.draws
 - Amane
 - ままりも
-- ゆうみに
+- yu_mini
 - eno
 - 由美
 - DotAnimals
@@ -89,4 +89,9 @@
 - 藤米ちこ
 - 碧水(hekisui)
 - いすむ
+- ROKU
+- エース
+- ici
+- kafkaf
+- しらたま
 - Flowerly Friends
