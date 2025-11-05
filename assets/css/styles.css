@@ -169,9 +169,16 @@ section {
     margin-bottom: 16px;
 }
 
+.lead {
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
 .note {
     color: #666;
     font-size: 14px;
+    padding-left: 40px;
+    padding-right: 40px;
 }
 
 /* ボタン */
