@@ -19,7 +19,6 @@
     "url": "."
   },
   "dependencies": {
-    "@anthropic-ai/claude-code": "^1.0.68",
     "playwright": "^1.53.1",
     "playwright-mcp": "^0.0.12"
   }

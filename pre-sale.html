@@ -21,8 +21,18 @@
       line-height: 1.6; color: #333; font-size: 16px; letter-spacing: 0.1em;
       overflow-x: hidden; width: 100%; padding-bottom: 84px;
     }
+    body.has-topbar { padding-top: 48px; }
     .fixed-background { position: fixed; inset: 0; z-index: -1; pointer-events: none; background-image: url('content/images/12_background/background.webp'); background-size: cover; background-position: center top; background-repeat: no-repeat; }
     .container { max-width: 900px; margin: 0 auto; padding: 0 16px; }
+
+    /* Top bar */
+    .topbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background: rgba(255,255,255,0.8); box-shadow: 0 2px 8px rgba(0,0,0,0.08); opacity: 1; }
+    .topbar-inner { height: 48px; display: flex; align-items: center; justify-content: center; position: relative; }
+    .topbar-title { font-family: 'Encode Sans Condensed', sans-serif; font-size: 16px; font-weight: 600; letter-spacing: 0.05em; }
+    .topbar-title, .topbar-title a { background: linear-gradient(-415deg, #f29bc6 35%, #9980c6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .topbar-title a { text-decoration: none; color: inherit; display: inline-block; }
+    .topbar-back { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); text-decoration: none; color: #7a5cc7; font-weight: 600; font-size: 18px; line-height: 1; padding: 6px 8px; border-radius: 6px; }
+    .topbar-back:focus { outline: 2px solid rgba(122,92,199,0.4); outline-offset: 2px; }
 
     .page-title {
         font-family: 'Encode Sans Condensed', sans-serif;
@@ -63,8 +73,8 @@
     .sold-badge { position: absolute; top: 12px; left: 12px; background: rgba(0,0,0,0.75); color: #fff; font-weight: 700; font-size: 12px; padding: 6px 10px; border-radius: 4px; letter-spacing: 0.12em; display: none; }
     .work-card.sold .sold-badge { display: inline-block; }
 
-    .sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 100; background: linear-gradient(-415deg, #f29bc6 35%, #9980c6 100%); padding: 12px 16px; display: flex; justify-content: center; align-items: center; box-shadow: 0 -4px 12px rgba(0,0,0,0.08); }
-    .sticky-cta a { display: inline-block; background: white; color: #7a5cc7; text-decoration: none; font-weight: 600; padding: 12px 20px; border-radius: 24px; letter-spacing: 0.1em; min-width: 240px; text-align: center; }
+    .sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 100; background: linear-gradient(-415deg, #f29bc6 35%, #9980c6 100%); height: 90px; padding: 0 16px; display: flex; justify-content: center; align-items: center; box-shadow: 0 -4px 12px rgba(0,0,0,0.08); }
+    .sticky-cta a { display: inline-block; background: white; color: #ff79a6; text-decoration: none; font-weight: 600; padding: 12px 20px; border-radius: 24px; letter-spacing: 0.1em; min-width: 240px; text-align: center; }
 
     .footer { background: linear-gradient(-415deg, #f29bc6 35%, #9980c6 100%); padding-top: 32px; padding-bottom: 16px; padding-left: 32px; padding-right: 32px; text-align: center; color: white; margin-top: 24px; }
     .footer-content { max-width: 800px; margin: 0 auto; }
@@ -79,7 +89,13 @@
     @media (max-width: 480px) { .container { padding: 0 8px; } }
   </style>
 </head>
-<body>
+<body class="has-topbar">
+  <nav class="topbar" aria-label="メイン">
+    <div class="container topbar-inner">
+      <a class="topbar-back" href="index.html" aria-label="トップへ戻る">＜</a>
+      <div class="topbar-title"><a href="index.html#top">Flowerly Friends Collection 2026</a></div>
+    </div>
+  </nav>
   <div class="fixed-background"></div>
 
   <main class="container">
@@ -275,4 +291,3 @@
   </footer>
 </body>
 </html>
-

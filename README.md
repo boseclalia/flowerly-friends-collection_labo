@@ -59,8 +59,8 @@ Flowerly Friends Collectionの公式ウェブサイトです。
 
 1. **TXTファイル編集**: `content/txt/01_header.txt` などを編集
 2. **画像追加**: 必要に応じて `content/images/01_header/` などに画像を配置
-3. **変更報告**: Claude Codeに「01_header.txtを更新しました」と報告
-4. **HTML反映**: 自動的に `index.html` に内容が反映される
+3. **反映依頼**: Codex に「01_header.txtを反映して」と依頼（または手動反映）
+4. **HTML反映**: Codex の支援で `index.html` を更新
 
 ## 🚀 ローカル確認
 
@@ -75,15 +75,21 @@ npm run serve
 # http://localhost:8080 でアクセス
 ```
 
+## 📑 サイト構造
+
+- トップページ: `index.html`
+  - 予約販売: `pre-sale.html`
+  - フラコレ応援グッズ: `support.html`
+
 ## 💡 特徴
 
 - ✅ シンプルな静的HTML
 - ✅ TXTファイルで簡単コンテンツ管理
-- ✅ Claude Codeによる自動HTML反映
+- ✅ Codex による反映支援（自動ではなく支援）
 - ✅ サーバー不要で動作
 - ✅ 高速表示
 
 ## 📋 管理担当
 
 **コンテンツ編集**: ユーザー（TXTファイル編集）
-**HTML反映**: Claude Code（自動反映）
+**HTML反映**: Codex（支援・手動反映）
