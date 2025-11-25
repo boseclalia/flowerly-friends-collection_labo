@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pre-Sale｜作品の予約販売 | Flowerly Friends Collection 2026</title>
+  <meta name="description" content="フラコレに出展する作品が購入できます。購入希望の方は下のボタンからお申し込みください。">
+  <link rel="icon" type="image/png" href="content/images/favicon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/svg+xml" href="content/images/favicon/favicon.svg">
+  <link rel="shortcut icon" href="content/images/favicon/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="content/images/favicon/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { overflow-x: hidden; }
+    body {
+      font-family: 'Noto Sans JP', system-ui, -apple-system, sans-serif;
+      line-height: 1.6; color: #333; font-size: 16px; letter-spacing: 0.1em;
+      overflow-x: hidden; width: 100%; padding-bottom: 84px;
+    }
+    body.has-topbar { padding-top: 48px; }
+    .fixed-background { position: fixed; inset: 0; z-index: -1; pointer-events: none; background-image: url('content/images/12_background/background.webp'); background-size: cover; background-position: center top; background-repeat: no-repeat; }
+    .container { max-width: 900px; margin: 0 auto; padding: 0 16px; }
+
+    /* Top bar */
+    .topbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background: rgba(255,255,255,0.8); box-shadow: 0 2px 8px rgba(0,0,0,0.08); opacity: 1; }
+    .topbar-inner { height: 48px; display: flex; align-items: center; justify-content: center; position: relative; }
+    .topbar-title { font-family: 'Encode Sans Condensed', sans-serif; font-size: 16px; font-weight: 600; letter-spacing: 0.05em; }
+    .topbar-title, .topbar-title a { background: linear-gradient(-415deg, #f29bc6 35%, #9980c6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .topbar-title a { text-decoration: none; color: inherit; display: inline-block; }
+    .topbar-back { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); text-decoration: none; color: #7a5cc7; font-weight: 600; font-size: 18px; line-height: 1; padding: 6px 8px; border-radius: 6px; display: flex; align-items: center; justify-content: center; }
+    .topbar-back img { width: 20px; height: 20px; display: block; }
+    .topbar-back:focus { outline: 2px solid rgba(122,92,199,0.4); outline-offset: 2px; }
+
+    .page-title {
+        font-family: 'Encode Sans Condensed', sans-serif;
+        font-size: 48px;
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 0;
+        letter-spacing: 0.05em;
+        background: linear-gradient(-415deg, #f29bc6 35%, #9980c6 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        padding: 16px 16px 0 16px;
+    }
+    .page-subtitle {
+        font-size: 16px;
+        font-family: 'Times New Roman', serif;
+        text-align: center;
+        color: #666;
+        margin-bottom: 24px;
+        letter-spacing: 0.1em;
+        padding: 0 16px;
+    }
+    .lead { font-size: 14px; line-height: 1.8; color: #555; margin: 0 auto 8px; padding: 0 40px; max-width: 720px; }
+    .note { font-size: 14px; color: #b39ddb; text-align: left; margin-bottom: 16px; padding: 0 40px; }
+
+    .works { display: grid; gap: 20px; padding: 16px; }
+    .work-card { position: relative; background: rgba(255,255,255,0.7); border: 1px solid rgba(0,0,0,0.08); border-radius: 12px; padding: 16px; }
+    .work-media { display: flex; justify-content: center; align-items: center; }
+    .work-media .image-frame { max-width: 308px; width: 100%; }
+    .work-media img { width: 100%; height: auto; object-fit: contain; display: block; border-radius: 8px; border: 1px solid #e6e6e6; }
+    .work-caption {
+          margin-top: 12px; font-size: 14px; color: #444; line-height: 1.8; }
+    .members-more {
+      text-align: center;
+      color: #666;
+      font-size: 14px;
+      letter-spacing: 0.05em;
+      margin-top: 16px;
+    }
+    .work-caption .title { font-weight: 700; font-size: 16px; color: #333; margin-bottom: 4px; }
+    .label { color: #666; }
+    .price { font-weight: 600; }
+
+    .sold-badge { position: absolute; top: 12px; left: 12px; background: rgba(0,0,0,0.75); color: #fff; font-weight: 700; font-size: 12px; padding: 6px 10px; border-radius: 4px; letter-spacing: 0.12em; display: none; }
+    .work-card.sold .sold-badge { display: inline-block; }
+
+    .sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 100; background: linear-gradient(-415deg, #f29bc6 35%, #9980c6 100%); height: 90px; padding: 0 16px; display: flex; justify-content: center; align-items: center; box-shadow: 0 -4px 12px rgba(0,0,0,0.08); }
+    .sticky-cta a { display: inline-block; background: white; color: #ff79a6; text-decoration: none; font-weight: 600; padding: 12px 20px; border-radius: 24px; letter-spacing: 0.1em; min-width: 240px; text-align: center; }
+
+    .footer { background: linear-gradient(-415deg, #f29bc6 35%, #9980c6 100%); padding-top: 32px; padding-bottom: 16px; padding-left: 32px; padding-right: 32px; text-align: center; color: white; margin-top: 24px; }
+    .footer-content { max-width: 800px; margin: 0 auto; }
+    .footer-social { display: flex; justify-content: center; gap: 32px; margin-bottom: 24px; flex-wrap: wrap; }
+    .social-link { display: flex; flex-direction: column; align-items: center; text-decoration: none; color: white; transition: transform 0.3s ease; }
+    .social-link:hover { transform: translateY(-4px); }
+    .social-icon { width: 48px; height: 48px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 8px; border: 2px solid rgba(255,255,255,0.3); }
+    .social-icon svg { width: 24px; height: 24px; fill: white; }
+    .social-name { font-size: 14px; font-weight: 500; }
+    .footer-copyright { font-size: 14px; opacity: 0.8; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 24px; margin-left: -32px; margin-right: -32px; padding-left: 32px; padding-right: 32px; }
+
+    @media (max-width: 480px) { .container { padding: 0 8px; } }
+  </style>
+</head>
+<body class="has-topbar">
+  <nav class="topbar" aria-label="メイン">
+    <div class="container topbar-inner">
+      <a class="topbar-back" href="index.html" aria-label="トップへ戻る">
+        <img src="content/images/11_svg/arrow_back_ios_new_18dp_7A5CC7_FILL0_wght400_GRAD0_opsz20.svg" alt="戻る">
+      </a>
+      <div class="topbar-title"><a href="index.html#top">Flowerly Friends Collection 2026</a></div>
+    </div>
+  </nav>
+  <div class="fixed-background"></div>
+
+  <main class="container">
+    <h2 class="page-title">Pre-Sale</h2>
+    <h3 class="page-subtitle">作品の予約販売</h3>
+    <p class="lead">フラコレに出展する作品が購入できます。購入希望の方は下のボタンからお申し込みください。</p>
+    <p class="note">※予約販売は、2月9日の正午が締め切りとなります。</p>
+
+    <section class="works" aria-label="予約販売作品一覧">
+      <article class="work-card" aria-label="『Load the bullet of love』">
+        <div class="work-media">
+          <div class="image-frame">
+            <img src="content/images/07.5_pre-sale/1.webp" alt="『Load the bullet of love』（6maker）" loading="lazy">
+          </div>
+        </div>
+        <div class="work-caption">
+          <div class="title">『Load the bullet of love』</div>
+          <div><span class="label">作者：</span>6maker</div>
+          <div><span class="label">サイズ：</span>A3</div>
+          <div><span class="label">展示：</span>キャンバスプリント予定</div>
+          <div><span class="label">販売価格：</span><span class="price">0.11ETH</span></div>
+        </div>
+      </article>
+      <article class="work-card" aria-label="Airy Morning">
+        <div class="work-media">
+          <div class="image-frame">
+            <img src="content/images/07.5_pre-sale/2.webp" alt="Airy Morning（いすむ）" loading="lazy">
+          </div>
+        </div>
+        <div class="work-caption">
+          <div class="title">Airy Morning</div>
+          <div><span class="label">作者：</span>いすむ</div>
+          <div><span class="label">サイズ：</span>18cm×18cm</div>
+          <div><span class="label">仕様：</span>キャンバスプリント</div>
+          <div><span class="label">販売価格：</span><span class="price">¥3,000</span></div>
+        </div>
+      </article>
+    </section>
+    <div class="members-more">and more...</div>
+  </main>
+
+  <div class="sticky-cta" role="region" aria-label="申込固定バー">
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfY5FPXZCfLBsI_zwO9udx2CJupyGPy_Km5jsz04Q5gSnj8tw/viewform" target="_blank" rel="noopener" aria-label="申し込みはこちら（Googleフォームが開きます）">申し込みはこちら</a>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-social">
+        <a href="https://x.com/kann_50" target="_blank" class="social-link" rel="noopener">
+          <div class="social-icon">
+            <img src="content/images/11_svg/X_logo.svg" alt="X Logo" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+          </div>
+          <span class="social-name">X</span>
+        </a>
+        <a href="https://www.instagram.com/flowerlyfriends_nft/" target="_blank" class="social-link" rel="noopener">
+          <div class="social-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </div>
+          <span class="social-name">Instagram</span>
+        </a>
+        <a href="https://discord.com/invite/CNZTwwAVe5" target="_blank" class="social-link" rel="noopener">
+          <div class="social-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419-.0189 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1568 2.4189z"/></svg>
+          </div>
+          <span class="social-name">Discord</span>
+        </a>
+      </div>
+      <div class="footer-copyright">
+        <p>©︎2025 Flowerly Friends Cosplay</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
