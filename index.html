@@ -578,7 +578,8 @@
             background-color: rgba(255, 255, 255, 0.6);
             border-radius: 12px;
             padding: 24px;
-            margin-bottom: 16px;
+            padding-bottom: 0;
+            margin-bottom: 0;
         }
         
         .venue-name {
@@ -1188,7 +1189,9 @@
         
         /* 作品販売セクション */
         .artwork-section {
-            padding-bottom: 36px;
+            padding: 48px 0 56px 0;
+            background: linear-gradient(-415deg, #f29bc6 35%, #9980c6 100%);
+            color: white;
         }
         
         .artwork-title {
@@ -1198,33 +1201,30 @@
             text-align: center;
             margin-bottom: 0;
             letter-spacing: 0.05em;
-            background: linear-gradient(-415deg, #f29bc6 35%, #9980c6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: white;
         }
-        
+
         .artwork-subtitle {
             font-size: 16px;
             font-family: 'Times New Roman', serif;
             text-align: center;
-            color: #666;
+            color: white;
             margin-bottom: 24px;
             letter-spacing: 0.1em;
         }
         
         .artwork-content {
-            font-size: 14px;
+            font-size: 16px;
             line-height: 1.8;
-            color: #555;
+            color: white;
             margin-bottom: 32px;
             text-align: left;
             padding: 0 24px;
         }
         
         .artwork-note {
-            font-size: 12px;
-            color: #888;
+            font-size: 14px;
+            color: white;
             margin-top: 16px;
         }
         
@@ -1235,22 +1235,24 @@
         
         .artwork-button {
             display: inline-block;
-            padding: 12px 24px;
-            background: linear-gradient(-415deg, #f29bc6 35%, #9980c6 100%);
-            color: white;
+            padding: 16px 32px;
+            background: white;
+            color: #ff79a6;
             text-decoration: none;
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 500;
             border-radius: 25px;
             cursor: pointer;
             transition: all 0.3s ease;
             border: none;
-            box-shadow: 0 2px 8px rgba(115, 186, 199, 0.2);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25), 0 0 30px rgba(255, 121, 166, 0.6);
+            animation: glow 2s ease-in-out infinite alternate;
+            letter-spacing: 0.1em;
         }
         
         .artwork-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(115, 186, 199, 0.3);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35), 0 0 40px rgba(255, 121, 166, 0.8);
         }
         
         .artwork-image {
@@ -1267,6 +1269,13 @@
             margin: 0 auto 16px;
             width: 80px;
             height: 80px;
+            filter: brightness(0) saturate(0) invert(1);
+        }
+
+        .artwork-section .place-content {
+            background-color: transparent;
+            border: none;
+            box-shadow: none;
         }
         
         /* 支援者セクション */
@@ -1950,19 +1959,22 @@
     </section>
 
     <!-- 作品販売 -->
-    <section class="artwork-section" style="display: none;">
+    <section class="artwork-section">
         <div class="container">
             <h2 class="artwork-title">Pre-Sale</h2>
             <h3 class="artwork-subtitle">作品の予約販売</h3>
             <div class="place-content">
                 <img src="content/images/07_artwork-sales/icon.png" alt="作品販売アイコン" class="artwork-icon">
-                <div class="artwork-content">
-                    <p>フラコレ2026の出展する作品の予約販売を行なっています。好きなクリエイターさんやお気に入りの作品をぜひ探してみてください。</p>
-                    <p class="artwork-note">※予約販売は、２月◯◯日の正午が締め切りとなります。</p>
-                    <div class="artwork-button-container">
-                        <a href="pre-sale.html" class="artwork-button">作品販売ページはこちら</a>
-                    </div>
+            <div class="artwork-content">
+                <p>フラコレ2026の出展する作品の予約販売を行なっています。好きなクリエイターさんやお気に入りの作品をぜひ探してみてください。</p>
+                <p class="artwork-note">※予約販売は、2月9日の正午が締め切りとなります。</p>
+                <div class="join-arrow">
+                    ↓
                 </div>
+                <div class="artwork-button-container">
+                    <a href="pre-sale.html" class="artwork-button">作品販売ページはこちら</a>
+                </div>
+            </div>
             </div>
         </div>
     </section>
