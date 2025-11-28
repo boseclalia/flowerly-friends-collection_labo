@@ -126,7 +126,8 @@
         
         /* レイアウト */
         .container {
-            max-width: 1200px;
+            width: min(900px, 100%);
+            max-width: 900px;
             margin: 0 auto;
             padding: 0 16px;
         }
@@ -444,6 +445,21 @@
         .schedule-section {
             padding-bottom: 12px;
         }
+
+        .schedule-place-grid {
+            display: grid;
+            gap: 32px;
+            margin-bottom: 0;
+            width: min(900px, 100%);
+            margin: 0 auto;
+        }
+
+        @media (min-width: 900px) {
+            .schedule-place-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                align-items: start;
+            }
+        }
         
         /* セクションタイトル */
         .section-title {
@@ -578,7 +594,7 @@
             background-color: rgba(255, 255, 255, 0.6);
             border-radius: 12px;
             padding: 24px;
-            padding-bottom: 0;
+            padding-bottom: 24px;
             margin-bottom: 0;
         }
         
@@ -601,8 +617,8 @@
         
         .venue-image {
             width: 100%;
-            max-width: 600px;
-            height: 300px;
+            max-width: 100%;
+            height: auto;
             object-fit: cover;
             border-radius: 12px;
             margin: 16px auto;
@@ -629,6 +645,7 @@
         .join-section {
             background: linear-gradient(-415deg, #f29bc6 35%, #9980c6 100%);
             padding: 16px 0 24px 0;
+            display: none;
         }
         
         .join-title {
@@ -1217,7 +1234,7 @@
             font-size: 16px;
             line-height: 1.8;
             color: white;
-            margin-bottom: 32px;
+            margin-bottom: 0;
             text-align: left;
             padding: 0 24px;
         }
@@ -1644,54 +1661,54 @@
         </div>
     </section>
 
-    <!-- スケジュール -->
-    <section class="schedule-section">
-        <div class="container">
-            <h2 class="schedule-title">Schedule</h2>
-            <h3 class="schedule-subtitle">スケジュール</h3>
-            <div class="schedule-list">
-                <div class="schedule-header">
-                    <div class="schedule-year">2026</div>
-                    <div class="entrance-fee-inline">入場無料！</div>
-                </div>
-                <div class="schedule-item">
-                    <div class="schedule-line">2/10（火） 11:00-19:00</div>
-                </div>
-                <div class="schedule-item">
-                    <div class="schedule-line">2/11（水） 11:00-19:00</div>
-                </div>
-                <div class="schedule-item">
-                    <div class="schedule-line">2/12（木） 11:00-19:00</div>
-                </div>
-                <div class="schedule-item">
-                    <div class="schedule-line">2/13（金） 11:00-19:00</div>
-                </div>
-                <div class="schedule-item">
-                    <div class="schedule-line">2/14（土） 15:30-19:00</div>
-                    <div class="schedule-note">12:00〜15:00はしらたまオフ会を開催</div>
-                </div>
-                <div class="schedule-item">
-                    <div class="schedule-line">2/15（日） 11:00-15:00</div>
+    <div class="schedule-place-grid">
+        <section class="schedule-section">
+            <div class="container">
+                <h2 class="schedule-title">Schedule</h2>
+                <h3 class="schedule-subtitle">スケジュール</h3>
+                <div class="schedule-list">
+                    <div class="schedule-header">
+                        <div class="schedule-year">2026</div>
+                        <div class="entrance-fee-inline">入場無料！</div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-line">2/10（火） 11:00-19:00</div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-line">2/11（水） 11:00-19:00</div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-line">2/12（木） 11:00-19:00</div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-line">2/13（金） 11:00-19:00</div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-line">2/14（土） 15:30-19:00</div>
+                        <div class="schedule-note">12:00〜15:00はしらたまオフ会を開催</div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-line">2/15（日） 11:00-15:00</div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 開催場所 -->
-    <section class="place-section">
-        <div class="container">
-            <h2 class="place-title">Place</h2>
-            <h3 class="place-subtitle">開催場所</h3>
-            <div class="place-content">
-                <div class="venue-name">キチジョウジギャラリー</div>
-                <div class="venue-address">東京都三鷹市井の頭3−32−16 セブンスターマンション105</div>
-                <img src="content/images/04_venue/place.webp" alt="キチジョウジギャラリー" class="venue-image">
-                <div class="venue-link">
-                    <a href="http://kichijojigallery.com/" target="_blank">ギャラリー詳細はこちら</a>
+        <section class="place-section">
+            <div class="container">
+                <h2 class="place-title">Place</h2>
+                <h3 class="place-subtitle">開催場所</h3>
+                <div class="place-content">
+                    <div class="venue-name">キチジョウジギャラリー</div>
+                    <div class="venue-address">東京都三鷹市井の頭3−32−16 セブンスターマンション105</div>
+                    <img src="content/images/04_venue/place.webp" alt="キチジョウジギャラリー" class="venue-image">
+                    <div class="venue-link">
+                        <a href="http://kichijojigallery.com/" target="_blank">ギャラリー詳細はこちら</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
     <!-- Join -->
     <section class="join-section">

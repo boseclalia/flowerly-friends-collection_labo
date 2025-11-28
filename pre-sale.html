@@ -23,7 +23,7 @@
     }
     body.has-topbar { padding-top: 48px; }
     .fixed-background { position: fixed; inset: 0; z-index: -1; pointer-events: none; background-image: url('content/images/12_background/background.webp'); background-size: cover; background-position: center top; background-repeat: no-repeat; }
-    .container { max-width: 900px; margin: 0 auto; padding: 0 16px; }
+    .container { width: min(900px, 100%); max-width: 900px; margin: 0 auto; padding: 0 16px; }
 
     /* Top bar */
     .topbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background: rgba(255,255,255,0.8); box-shadow: 0 2px 8px rgba(0,0,0,0.08); opacity: 1; }
@@ -60,10 +60,49 @@
     .lead { font-size: 14px; line-height: 1.8; color: #555; margin: 0 auto 8px; padding: 0 40px; max-width: 720px; }
     .note { font-size: 14px; color: #b39ddb; text-align: left; margin-bottom: 16px; padding: 0 40px; }
 
-    .works { display: grid; gap: 20px; padding: 16px; }
-    .work-card { position: relative; background: rgba(255,255,255,0.7); border: 1px solid rgba(0,0,0,0.08); border-radius: 12px; padding: 16px; }
+    .works {
+      display: grid;
+      gap: 20px;
+      padding: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      justify-content: center;
+    }
+    .work-card {
+      position: relative;
+      background: rgba(255,255,255,0.7);
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 12px;
+      padding: 16px;
+      width: 100%;
+      max-width: 400px;
+    }
     .work-media { display: flex; justify-content: center; align-items: center; }
-    .work-media .image-frame { max-width: 308px; width: 100%; }
+    .work-media .image-frame { width: 100%; }
+
+    .image-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+      z-index: 200;
+      cursor: zoom-out;
+    }
+    .image-modal-overlay.visible { display: flex; }
+    .image-modal-overlay img {
+      max-width: 90vw;
+      max-height: 600px;
+      border-radius: 12px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    @supports (max-height: min(600px, calc(100vh - 80px))) {
+      .image-modal-overlay img {
+        max-height: min(600px, calc(100vh - 80px));
+      }
+    }
     .work-media img { width: 100%; height: auto; object-fit: contain; display: block; border-radius: 8px; border: 1px solid #e6e6e6; }
     .work-caption {
           margin-top: 12px; font-size: 14px; color: #444; line-height: 1.8; }
@@ -118,7 +157,7 @@
       <article class="work-card" aria-label="『Load the bullet of love』">
         <div class="work-media">
           <div class="image-frame">
-            <img src="content/images/07.5_pre-sale/1.webp" alt="『Load the bullet of love』（6maker）" loading="lazy">
+            <img src="content/images/07.5_pre-sale/1.webp" data-large-src="content/images/07.5_pre-sale/1.webp" alt="『Load the bullet of love』（6maker）" loading="lazy">
           </div>
         </div>
         <div class="work-caption">
@@ -132,7 +171,7 @@
       <article class="work-card" aria-label="Airy Morning">
         <div class="work-media">
           <div class="image-frame">
-            <img src="content/images/07.5_pre-sale/2.webp" alt="Airy Morning（いすむ）" loading="lazy">
+            <img src="content/images/07.5_pre-sale/2.webp" data-large-src="content/images/07.5_pre-sale/2.webp" alt="Airy Morning（いすむ）" loading="lazy">
           </div>
         </div>
         <div class="work-caption">
@@ -178,5 +217,43 @@
       </div>
     </div>
   </footer>
+  <div class="image-modal-overlay" role="dialog" aria-modal="true" aria-label="作品画像拡大表示">
+    <img src="" alt="">
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const overlay = document.querySelector('.image-modal-overlay');
+      const modalImage = overlay.querySelector('img');
+      const workImages = document.querySelectorAll('.work-media img');
+
+      workImages.forEach((img) => {
+        img.style.cursor = 'zoom-in';
+        img.addEventListener('click', function () {
+          const largeSrc = img.dataset.largeSrc || img.src;
+          modalImage.src = largeSrc;
+          modalImage.alt = img.alt;
+          overlay.classList.add('visible');
+          document.body.style.overflow = 'hidden';
+        });
+      });
+
+      function closeModal() {
+        overlay.classList.remove('visible');
+        document.body.style.overflow = '';
+      }
+
+      overlay.addEventListener('click', function (event) {
+        if (event.target === overlay) {
+          closeModal();
+        }
+      });
+
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && overlay.classList.contains('visible')) {
+          closeModal();
+        }
+      });
+    });
+  </script>
 </body>
 </html>
