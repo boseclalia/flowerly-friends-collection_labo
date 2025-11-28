@@ -89,6 +89,20 @@ npm run serve
 - ✅ サーバー不要で動作
 - ✅ 高速表示
 
+## 🧭 GitHub フロー
+
+このリポジトリは「開発用（`labo` リモート）」と「本番用（`production` リモート）」の二段階で運用しています。
+
+- **開発用**: 日常的な修正は `git push labo main` で反映。Codex の指示や個別の修正もまずこちらへ。
+- **本番用**: `git fetch production` → `git diff labo/main production/main` で差分確認し、必要なら `git merge production/main`（もしくは `git rebase production/main`）を実行後、`git push production main` で公開。
+- 本番更新の流れ：
+  1. `git push labo main` で開発リモートを更新
+  2. `git fetch production` / `git diff labo/main production/main` で差分確認
+  3. 本番に追随する場合は `git merge production/main` または `git rebase production/main`
+  4. `git status` で作業ツリーがクリーンか確認したら `git push production main`
+
+この手順で開発用と本番用を分離した運用を維持できます。
+
 ## 📋 管理担当
 
 **コンテンツ編集**: ユーザー（TXTファイル編集）
