@@ -67,7 +67,7 @@
         padding: 0 16px;
     }
     .lead { font-size: 14px; line-height: 1.8; color: #555; margin: 0 auto 8px; padding: 0 40px; max-width: 720px; }
-    .note { font-size: 14px; color: #b39ddb; text-align: left; margin-bottom: 16px; padding: 0 40px; }
+    .note { font-size: 14px; color: #ff4c4c; text-align: left; margin-bottom: 8px; padding: 0 40px; }
 
     .works {
       display: grid;
@@ -126,8 +126,28 @@
     .label { color: #666; }
     .price { font-weight: 600; }
 
-    .sold-badge { position: absolute; top: 12px; left: 12px; background: rgba(0,0,0,0.75); color: #fff; font-weight: 700; font-size: 12px; padding: 6px 10px; border-radius: 4px; letter-spacing: 0.12em; display: none; }
+    .sold-badge { position: absolute; top: 12px; left: 12px; background: #ff4c4c; color: #fff; font-weight: 700; font-size: 12px; padding: 6px 10px; border-radius: 4px; letter-spacing: 0.12em; display: none; text-transform: none; }
     .work-card.sold .sold-badge { display: inline-block; }
+    .work-card.sold { filter: none; }
+    .work-card.sold .price {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+    .work-card.sold .price-amount {
+      text-decoration: line-through;
+      text-decoration-thickness: 2px;
+      text-decoration-color: #ff4c4c;
+      font-weight: 600;
+      display: inline-block;
+    }
+    .work-card.sold .price-note {
+      color: #ff4c4c;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: none;
+    }
 
     .sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 100; background: linear-gradient(-415deg, #f29bc6 35%, #9980c6 100%); height: 90px; padding: 0 16px; display: flex; justify-content: center; align-items: center; box-shadow: 0 -4px 12px rgba(0,0,0,0.08); }
     .sticky-cta a { display: inline-block; background: white; color: #ff79a6; text-decoration: none; font-weight: 600; padding: 12px 20px; border-radius: 24px; letter-spacing: 0.1em; min-width: 240px; text-align: center; }
@@ -160,7 +180,8 @@
     <h2 class="page-title">Pre-Sale</h2>
     <h3 class="page-subtitle">作品の予約販売</h3>
     <p class="lead">フラコレに出展する作品が購入できます。購入希望の方は下のボタンからお申し込みください。なお、支払いはPayPayとJPYCが可能です。クリエイターによって暗号資産での支払いとなります。</p>
-    <p class="note">※予約販売は、2月9日の正午が締め切りとなります。</p>
+    <p class="note">※申し込み者が複数いた場合は入金が一番早い人が購入完了と見なします（二番目以降に入金した方には返金いたします）</p>
+    <p class="note">※予約販売は、2月9日の正午が締め切りとなります</p>
 
     <section class="works" aria-label="予約販売作品一覧">
       <article class="work-card" aria-label="『Load the bullet of love』">
@@ -191,7 +212,8 @@
           <div><span class="label">販売価格：</span><span class="price">¥3,000</span></div>
         </div>
       </article>
-      <article class="work-card" aria-label="Bloom Arc-星と花の交差する場所- Moco">
+      <article class="work-card sold" aria-label="Bloom Arc-星と花の交差する場所- Moco">
+        <span class="sold-badge">Sold out</span>
         <div class="work-media">
           <div class="image-frame">
             <img src="content/images/07.5_pre-sale/3.webp" data-large-src="content/images/07.5_pre-sale/3.webp" alt="Bloom Arc-星と花の交差する場所- Moco（すずちい）" loading="lazy">
@@ -202,10 +224,16 @@
           <div><span class="label">作者：</span>すずちい</div>
           <div><span class="label">サイズ：</span>A4</div>
           <div><span class="label">仕様：</span>キャンバスプリント</div>
-          <div><span class="label">販売価格：</span><span class="price">¥7,000</span></div>
+          <div><span class="label">販売価格：</span>
+            <span class="price">
+              <span class="price-amount">¥7,000</span>
+              <span class="price-note">Sold out</span>
+            </span>
+          </div>
         </div>
       </article>
-      <article class="work-card" aria-label="さくら">
+      <article class="work-card sold" aria-label="さくら">
+        <span class="sold-badge">売約済み</span>
         <div class="work-media">
           <div class="image-frame">
             <img src="content/images/07.5_pre-sale/4.webp" data-large-src="content/images/07.5_pre-sale/4.webp" alt="さくら（とまとぅー王国）" loading="lazy">
@@ -216,7 +244,12 @@
           <div><span class="label">作者：</span>とまとぅー王国</div>
           <div><span class="label">サイズ：</span>A3</div>
           <div><span class="label">仕様：</span>キャンバスプリント</div>
-          <div><span class="label">販売価格：</span><span class="price">8AVAX or 15,000JPYC</span></div>
+          <div><span class="label">販売価格：</span>
+            <span class="price">
+              <span class="price-amount">8AVAX or 15,000JPYC</span>
+              <span class="price-note">売約済み</span>
+            </span>
+          </div>
         </div>
       </article>
       <article class="work-card" aria-label="おはな">
@@ -246,7 +279,6 @@
           <div><span class="label">サイズ：</span>F3（273mm×220mm）</div>
           <div><span class="label">仕様：</span>キャンバスプリント</div>
           <div><span class="label">販売価格：</span><span class="price">¥30,000</span></div>
-          <div><span class="label">特記事項：</span>12月8日(月)21:00受付開始。</div>
         </div>
       </article>
       <article class="work-card" aria-label="パンジー鉢植えNo.1/10">
@@ -322,7 +354,7 @@
       <article class="work-card" aria-label="ハナミズ">
         <div class="work-media">
           <div class="image-frame">
-            <img src="content/images/07.5_pre-sale/13.jpeg" data-large-src="content/images/07.5_pre-sale/13.jpeg" alt="ハナミズ（ママカラ）" loading="lazy">
+            <img src="content/images/07.5_pre-sale/12.jpeg" data-large-src="content/images/07.5_pre-sale/12.jpeg" alt="ハナミズ（ママカラ）" loading="lazy">
           </div>
         </div>
         <div class="work-caption">
@@ -336,7 +368,7 @@
       <article class="work-card" aria-label="ピース">
         <div class="work-media">
           <div class="image-frame">
-            <img src="content/images/07.5_pre-sale/14.jpeg" data-large-src="content/images/07.5_pre-sale/14.jpeg" alt="ピース（パパカラ）" loading="lazy">
+            <img src="content/images/07.5_pre-sale/13.jpeg" data-large-src="content/images/07.5_pre-sale/13.jpeg" alt="ピース（パパカラ）" loading="lazy">
           </div>
         </div>
         <div class="work-caption">
@@ -345,6 +377,26 @@
           <div><span class="label">サイズ：</span>20cm×20cm</div>
           <div><span class="label">仕様：</span>キャンバスに直描き（アクリル）</div>
           <div><span class="label">販売価格：</span><span class="price">¥3,333</span></div>
+        </div>
+      </article>
+      <article class="work-card sold" aria-label="あなたの花は何色にでも染められる">
+        <span class="sold-badge">売約済み</span>
+        <div class="work-media">
+          <div class="image-frame">
+            <img src="content/images/07.5_pre-sale/14.jpeg" data-large-src="content/images/07.5_pre-sale/14.jpeg" alt="あなたの花は何色にでも染められる（寶萊 章博）" loading="lazy">
+          </div>
+        </div>
+        <div class="work-caption">
+          <div class="title">あなたの花は何色にでも染められる</div>
+          <div><span class="label">作者：</span>寶萊 章博</div>
+          <div><span class="label">サイズ：</span>スクエア14cm×14cm(額装込のサイズ)</div>
+          <div><span class="label">仕様：</span>額装</div>
+          <div><span class="label">販売価格：</span>
+            <span class="price">
+              <span class="price-amount">¥15,000</span>
+              <span class="price-note">売約済み</span>
+            </span>
+          </div>
         </div>
       </article>
     </section>
