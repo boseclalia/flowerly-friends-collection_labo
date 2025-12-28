@@ -106,6 +106,9 @@ npm run serve
   3. 本番に追随する場合は `git merge production/main` または `git rebase production/main`
   4. `git status` で作業ツリーがクリーンか確認したら `git push production main`
 
+### 🎯 特別な反映トリガー
+ユーザーが「`#n追加したので更新してproductionにも反映`」のようなフレーズを伝えた場合は、開発用の`labo`リモートに`git push labo main`を行い、続けて`production`リモートに`git push production main`で最新コミットを反映する流れを優先します。
+
 この手順で開発用と本番用を分離した運用を維持できます。
 
 ## 📋 管理担当
